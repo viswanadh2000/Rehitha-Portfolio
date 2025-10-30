@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Optional: if you ever add client-side routing (e.g., React Router), this keeps refreshes working
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
