@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
-// TODO: Replace with Rehitha's actual links
+// Links
 const LINKEDIN_URL = 'https://www.linkedin.com/in/rehitha-kilaru'
-const CALENDLY_URL = 'https://calendly.com/rehitha-kilaru'
+// Use the provided Calendly booking link and show this page in the embed
+const CALENDLY_URL = 'https://calendly.com/kilaru-rehitha27/30min?month=2025-10'
 const CONTACT_EMAIL = 'kilaru.rehitha27@gmail.com'
 
 export default function Schedule() {
@@ -57,13 +58,20 @@ export default function Schedule() {
             <a href={CALENDLY_URL} target="_blank" rel="noreferrer" className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500">Open Calendly</a>
           </div>
           <div className="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900">
-            <iframe
-              title="Calendly"
-              src={`${CALENDLY_URL}?hide_gdpr_banner=1&primary_color=f59e0b`}
-              width="100%"
-              height="600"
-              frameBorder="0"
-            />
+            {(() => {
+              const embedParams = 'hide_gdpr_banner=1&primary_color=f59e0b'
+              const joinChar = CALENDLY_URL.includes('?') ? '&' : '?'
+              const embedUrl = `${CALENDLY_URL}${joinChar}${embedParams}`
+              return (
+                <iframe
+                  title="Calendly"
+                  src={embedUrl}
+                  width="100%"
+                  height="600"
+                  frameBorder="0"
+                />
+              )
+            })()}
           </div>
         </div>
       </div>
